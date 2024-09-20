@@ -1,0 +1,26 @@
+# Ignore node_modules in any subdirectory
+**/node_modules
+**/npm-debug.log
+
+# Ignore Docker-related files
+**/Dockerfile*
+**/docker-compose*
+**/compose*
+
+# Ignore other unnecessary files
+**/*.dbmdl
+**/*.jfm
+**/charts
+**/obj
+**/secrets.dev.yaml
+**/values.dev.yaml
+LICENSE
+README.md
+
+# Add additional files to be ignored
+node_modules
+npm-debug.log
+Dockerfile
+docker-compose.yml
+.git
+.gitignore

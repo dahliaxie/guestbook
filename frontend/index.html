@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Guestbook</title>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&family=Xanh+Mono&family=Syne+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome to my guestbook</h1>
+        <h2>I'd love to hear your passing thoughts, share them below!</h2>
+        <div id="userCount">Users online: 0</div>
+    </header>
+    <button id="openPopupButton">Write a Message</button>
+    <div id="messagePopup" class="hidden">
+        <span id="closePopupButton" class="close">&times;</span>
+        <input type="text" id="nameInput" placeholder="Your Name" />
+        <textarea id="messageInput" placeholder="Type your message here"></textarea>
+        <button id="submitMessageButton">Submit</button>
+        <div id="thankYouMessage" class="hidden">Thank you for your message!</div>
+    </div>
+    <ul id="messagesList"></ul>
+
+    <!-- Include socket.io client library -->
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="script.js"></script>
+
+</body>
+</html>

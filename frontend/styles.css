@@ -1,0 +1,253 @@
+body {
+    font-family: 'Xanh Mono', 'Syne Mono', 'VT323', monospace; /* Use the new fonts */
+    background-color: #f0f0f0;
+    color: #333; /* Black and gray accents */
+    margin: 2rem;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+header h1, header h2 {
+    text-align: left; /* Less structured appearance */
+    margin-left: 10%; /* Offset to create an organic look */
+}
+
+header h1 {
+    width: 100%;
+    font-size: 2.25rem;
+    font-weight: bold;
+    color: #333; /* grey accent */
+    margin: 0;
+    padding: 0.625rem;
+}
+
+header h2 {
+    width: 100%;
+    font-size: 1.5rem;
+    font-weight: normal;
+    color: #666; 
+    margin: 0;
+    padding: 0.625rem;
+}
+button {
+    font-family: 'Xanh Mono', 'Syne Mono', monospace; /* Use the new fonts */
+    background-color: #8FBC8F; /* Muted green */
+    color: #333; /* Black accent */
+    border: 1px solid #666; /* Gray accent */
+    padding: 1rem 2rem;
+    margin: 1rem;
+    cursor: pointer;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button:hover {
+    background-color: #7FA87F; /* Slightly darker muted green */
+}
+#messagePopup {
+    font-family: 'Xanh Mono', 'Syne Mono', monospace; /* Use the new fonts */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    z-index: 1000;
+    width: 80vw;
+    max-width: 600px;
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+#messagePopup.show {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+#messagePopup .close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+#messagesList {
+    position: absolute;
+    width: 100%;
+    max-width: 800px;
+    list-style-type: none;
+    padding: 0;
+    margin: 6rem 0 2rem 0; /* Add top margin to avoid overlap with header */
+}
+#messagesList li {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 1rem;
+    margin: 1rem;
+    border-radius: 0.5rem;
+    position: fixed;
+    width: auto;
+    transition: all 0.3s ease, opacity 0.5s ease-in-out;
+    animation: float 8s infinite ease-in-out;
+    opacity: 0.8;
+}
+
+#messagesList li.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#messagesList li:hover {
+    background-color: #e0e0e0;
+    transform: scale(1.05);
+}
+
+@keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-2rem); }
+    100% { transform: translateY(0); }
+}
+
+#nameInput, #messageInput {
+    font-family: 'Xanh Mono', 'Syne Mono', monospace; /* Use the new fonts */
+    width: calc(100% - 2.2rem);
+    height: 4rem;
+    padding: 1rem;
+    margin-bottom: 2rem;
+    border: 1px solid #ddd;
+    border-radius: 0.5rem;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+    font-size: 1rem;
+}
+
+#nameInput:focus, #messageInput:focus {
+    border-color: #aaa;
+}
+
+#messageInput {
+    height: 6rem;
+    margin-bottom: 1rem;
+}
+
+.message {
+    position: absolute; /* Required for dragging */
+    cursor: move; /* Indicates that the element is draggable */
+    /* Additional styling */
+    background: #fff; /* Example background color */
+    border: 1px solid #ddd; /* Example border */
+    padding: 10px; /* Example padding */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Optional shadow for better visibility */
+    z-index: 1000; /* Ensure the element is on top while dragging */
+}
+
+
+.message-name {
+    font-weight: bold;
+}
+
+.message-date {
+    color: #888;
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 600px) {
+    #messagePopup {
+        width: 90%;
+        padding: 1rem;
+    }
+
+    #messagesList li {
+        width: 90%;
+        padding: 0.5rem;
+    }
+}
+
+#openPopupButton {
+    font-family: 'Xanh Mono', 'Syne Mono', monospace; /* Use the new fonts */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #8FBC8F;
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    margin: 1rem;
+    cursor: pointer;
+    border-radius: 0.5rem;
+    z-index: 1000;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+#openPopupButton:hover{
+    background-color: #7FA87F; 
+}
+#messagePopup .close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.hidden {
+    display: none;
+}
+
+#thankYouMessage {
+    background-color: #ff9800;
+    color: white;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    margin-top: 1rem;
+}
+
+#thankYouMessage.show {
+    display: block;
+    opacity: 1;
+}
+
+.message {
+    position: absolute;
+    cursor: move;
+    transition: opacity 0.3s ease;
+}
+
+.message:active {
+    cursor: grabbing;
+    opacity: 0.7; /* Slightly transparent during drag */
+}
+.user-cursor {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: rgba(0, 150, 255, 0.5);
+    pointer-events: none; /* Make sure it doesn’t interfere with other elements */
+}
+#userCount {
+    position: fixed;
+    top: 10px; /* Distance from the top edge */
+    right: 10px; /* Distance from the right edge */
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background for visibility */
+    color: #fff; /* White text color */
+    padding: 5px 10px; /* Padding around the text */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 14px; /* Font size for readability */
+    z-index: 1000; /* Ensure it's on top of other elements */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Optional shadow for better visibility */
+}
